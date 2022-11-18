@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jijoo <jijoo@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: jijoo <jijoo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/05 16:03:42 by jijoo             #+#    #+#             */
-/*   Updated: 2022/11/07 14:10:08 by jijoo            ###   ########.fr       */
+/*   Updated: 2022/11/07 18:00:59 by jijoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,18 +20,18 @@ int	ft_isdigit(char c)
 		return (0);
 }
 
-int is_min_ele(int *a, int num)
+int	is_min_ele(int *a, int num)
 {
-    int i;
+	int	i;
 
-    i = 0;
-    while (i < 3)
-    {
-        if (a[i] < num)
-            return (0);
-        i++;
-    }
-    return (1);
+	i = 0;
+	while (i < 3)
+	{
+		if (a[i] < num)
+			return (0);
+		i++;
+	}
+	return (1);
 }
 
 size_t	ft_strlen(const char *str)

@@ -6,11 +6,13 @@ SRCS = inst1.c\
 	sort2.c\
 	sort3.c\
 	utils.c\
-	utils2.c
+	utils2.c\
+	utils3.c\
+	split.c
 
-PS = push_swap
+NAME = push_swap
 
-${NAME}: ${PS}
+all: ${NAME}
 
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
@@ -18,20 +20,14 @@ RM = rm -f
 AR = ar -rc
 OBJS = ${SRCS:.c=.o}
 
-${NAME}: ${PS}
-	${AR} $@ $?
-
-${PS}: ${OBJS}
-	${CC} ${CFLAGS} ${OBJS} -o ${PS}
-
-all: ${NAME}
+${NAME}: ${SRCS} ${OBJS}
+	${CC} ${CFLAGS} ${OBJS} -o ${NAME}
 
 clean:
 	${RM} ${OBJS}
 
 fclean: clean
 	${RM} ${NAME}
-	${RM} ${PS}
 
 re: fclean all
 

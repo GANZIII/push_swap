@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jijoo <jijoo@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: jijoo <jijoo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 15:48:20 by jijoo             #+#    #+#             */
-/*   Updated: 2022/11/07 13:24:25 by jijoo            ###   ########.fr       */
+/*   Updated: 2022/11/07 22:41:09 by jijoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,16 @@ void	ft_putnbr(int num)
 {
 	char	c;
 
+	if (num == -2147483648)
+	{
+		write(1, "-2147483648", 11);
+		return ;
+	}
+	if (num < 0)
+	{
+		write(1, "-", 1);
+		return (ft_putnbr(-num));
+	}
 	if (num >= 10)
 		ft_putnbr(num / 10);
 	c = "0123456789"[num % 10];
@@ -43,6 +53,12 @@ int	ft_isnum(const char *str)
 
 	idx = 0;
 	len = (int)ft_strlen(str);
+	if (str[0] == '-')
+	{
+		idx++;
+		if (str[1] == 0)
+			return (0);
+	}
 	while (idx < len)
 	{
 		if (*(str + idx) < '0' || *(str + idx) > '9')
@@ -63,10 +79,9 @@ long	ft_atoi(const char *str)
 	sign = 1;
 	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
 		i++;
-	if (str[i] == '-' || str[i] == '+')
+	if (str[i] == '-')
 	{
-		if (str[i] == '-')
-			sign *= -1;
+		sign *= -1;
 		i++;
 	}
 	while (str[i] >= '0' && str[i] <= '9')
@@ -77,12 +92,14 @@ long	ft_atoi(const char *str)
 	return (sign * num);
 }
 
-int	check_dup(int arr[], int c)
+int	check_dup(int arr[], int c, int *lens)
 {
 	int	idx;
 	int	jdx;
 
 	idx = 0;
+	lens[1] = 0;
+	lens[0] = c;
 	while (idx < c)
 	{
 		jdx = 0;

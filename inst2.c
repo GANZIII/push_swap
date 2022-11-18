@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   inst2.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jijoo <jijoo@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: jijoo <jijoo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 13:31:48 by jijoo             #+#    #+#             */
-/*   Updated: 2022/11/07 14:23:09 by jijoo            ###   ########.fr       */
+/*   Updated: 2022/11/07 18:01:36 by jijoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ void	pa(int *ast, int *bst, int *lens)
 {
 	int	val;
 
+	val = bst[0];
 	if (lens[1])
-	{   
-        val = bst[0];
+	{
 		write(1, "pa\n", 3);
 		pop(bst, lens[1]);
 		lens[1] -= 1;
@@ -31,9 +31,9 @@ void	pb(int *ast, int *bst, int *lens)
 {
 	int	val;
 
+	val = ast[0];
 	if (lens[0])
 	{
-        val = ast[0];
 		write(1, "pb\n", 3);
 		pop(ast, lens[0]);
 		lens[0] -= 1;
